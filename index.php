@@ -6,6 +6,7 @@ function appointmentservices_shortcodes_init()
 {
     function appointmentservice_shortcode($atts = [], $content = null)
     {
+        $content .= '<script>var oAtts=' . json_encode($atts) . '</script>';
         $content .= file_get_contents(__DIR__ . "/appointmentServices.html");
         return $content;
     }

@@ -1,12 +1,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
 <script>
     angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
-        $scope.model = {
+        // sService is the wordpress parameter
+        $scope.model = { main_service: oAtts.service,
         "services":[]};
 
         $scope.bookAppointment = function(){
             //alert(JSON.stringify($scope.model));
-             $http.post("/slim/api/appointmentservice", $scope.model).then(
+            $http.post("/slim/api/appointmentservice", $scope.model).then(
                 function(data){
                     alert(JSON.stringify(data.data));
                 },
@@ -14,7 +15,7 @@
                     alert(JSON.stringify(err));
                 }
             )
-             
+          
         }
         $scope.addService = function(){
             $scope.model.services.push({"service_name":$scope.service_to_add});
